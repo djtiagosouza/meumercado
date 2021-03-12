@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>teste</title>
+</head>
+<body>
+    <table border="1" align="center" cellspacing="0" >
+<tr>
+<td>
+<b>
+Código
+</b>
+</td>
+
+<td>
+<b>
+Deletar
+</b>
+</td>
+
+
+</tr>
+
+
+    <?php
+    //enquanto a funçao "mysql_fetch_array" conseguir retornar valores
+    //da consulta armazenada em "$query", atribuimos estes valores à variavel "$dados"
+    while($dados = mysql_fetch_array($query))
+    {
+        //mostrando o conteudo da variavel dentro de uma tabela
+        echo "<tr>"; //Nova linha na tabela
+        echo "<td>";
+        echo "<b>";
+        echo         $dados['Codigo'];
+        $variavel = $dados['Codigo'];
+        echo "</b>";
+        echo "</td>";
+
+        echo "<td>";
+        echo('<form action="deletar.php" method="post">');
+        echo('<input type="hidden" name="deleta" value="'. $variavel .'" />');
+        echo "<input type='submit' value='Deletar' /> ";
+        echo "</form>";
+        echo "</td>";
+
+        echo "</tr>"; //Fecha a nova linha
+    }
+    ?>
+</table>
+
+</body>
+</html>
